@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Android App Development Using Scala &mdash; COMP 313/413 Lecture Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.1.0/lumen/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="COMP 313/413 Lecture Notes 1.0 documentation" href="index.html" />
+    <link rel="next" title="Summary" href="summary.html" />
+    <link rel="prev" title="Overview of a Lightweight Development Process" href="devprocess.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          COMP 313/413</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicoop.html">Basics of Object-Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#reference-semantics-vs-value-semantics">Reference semantics vs. value semantics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#equality-vs-identity">Equality vs. identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#parametric-polymorphism-generics">Parametric polymorphism (generics)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#relationships-among-classes-and-interfaces">Relationships among classes and interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#class-interface-continuum">Class-interface continuum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#subtyping-vs-subclassing-inheritance">Subtyping vs. subclassing/inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#subtype-polymorphism-static-vs-dynamic-type">Subtype polymorphism: static vs. dynamic type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#being-a-good-descendant-of-java-lang-object-system-object">Being a good descendant of java.lang.Object/System.Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#clone-in-the-context-of-the-composite-pattern">Clone in the context of the Composite pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#packages-namespaces">Packages/namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicoop.html#member-access">Member access</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="devprocess.html">Overview of a Lightweight Development Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Android App Development Using Scala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developing-on-the-command-line">Developing on the Command Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developing-with-intellij-idea">Developing with IntelliJ IDEA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-build-dependencies">Adding build dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-tools">Optional Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Android App Development Using Scala</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#required-development-tools">Required Development Tools</a></li>
+<li><a class="reference internal" href="#recommended-tools">Recommended Tools</a></li>
+<li><a class="reference internal" href="#preparation">Preparation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#developing-on-the-command-line">Developing on the Command Line</a><ul>
+<li><a class="reference internal" href="#specifying-the-location-of-the-android-sdk">Specifying the location of the Android SDK</a></li>
+<li><a class="reference internal" href="#starting-the-emulator">Starting the emulator</a></li>
+<li><a class="reference internal" href="#viewing-the-log">Viewing the log</a></li>
+<li><a class="reference internal" href="#running-the-application">Running the application</a></li>
+<li><a class="reference internal" href="#running-the-tests">Running the tests</a></li>
+<li><a class="reference internal" href="#starting-from-scratch">Starting from scratch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#developing-with-intellij-idea">Developing with IntelliJ IDEA</a><ul>
+<li><a class="reference internal" href="#configuring-intellij-idea">Configuring IntelliJ IDEA</a></li>
+<li><a class="reference internal" href="#generating-the-configuration-files">Generating the configuration files</a></li>
+<li><a class="reference internal" href="#opening-the-project-in-idea">Opening the project in IDEA</a></li>
+<li><a class="reference internal" href="#running-the-tests-and-the-application">Running the tests and the application</a></li>
+<li><a class="reference internal" href="#integrating-idea-and-sbt">Integrating IDEA and sbt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-build-dependencies">Adding build dependencies</a></li>
+<li><a class="reference internal" href="#optional-tools">Optional Tools</a><ul>
+<li><a class="reference internal" href="#for-windows-users">For Windows users</a></li>
+<li><a class="reference internal" href="#for-windows-and-mac-users">For Windows and Mac users</a></li>
+<li><a class="reference internal" href="#for-all-users">For all users</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tips">Tips</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="devprocess.html" title="Previous Chapter: Overview of a Lightweight Development Process"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Overview of a Li...</span>
+    </a>
+  </li>
+  <li>
+    <a href="summary.html" title="Next Chapter: Summary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Summary &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/scalaandroiddev.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="android-app-development-using-scala">
+<h1>Android App Development Using Scala<a class="headerlink" href="#android-app-development-using-scala" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we discuss the tools and processes for developing Android apps using Scala in detail.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-development-tools">
+<h3>Required Development Tools<a class="headerlink" href="#required-development-tools" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Java Development Kit (JDK) 6 or 7 through your package management
+system or from
+<a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads">Oracle</a>;
+to verify, visit <a class="reference external" href="http://www.java.com/en/download/installed.jsp">this site</a>
+and, if necessary, download Java from the same place.
+(On a Mac, be sure to do this in Safari.)</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">On Windows, it is usually best to install the JDK in a location that does not contain spaces.</p>
+</div>
+</li>
+<li><p class="first"><a class="reference external" href="http://developer.android.com/sdk">Android SDK</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://www.scala-sbt.org">Simple Build Tool (sbt)</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://github.com/pfn/android-sdk-plugin">android-sdk-plugin</a></p>
+<ul class="simple">
+<li><em>this is included in each of the code examples, so no explicit installation is required</em></li>
+<li>detailed <em>usage instructions</em> are <a class="reference external" href="https://github.com/pfn/android-sdk-plugin">half way down past the change log</a></li>
+</ul>
+</li>
+<li><p class="first"><a class="reference external" href="http://mercurial.selenic.com">Mercurial (hg)</a> distributed version control system (DVCS)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="recommended-tools">
+<h3>Recommended Tools<a class="headerlink" href="#recommended-tools" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.jetbrains.com/idea">JetBrains IntelliJ IDEA CE</a> (the latest stable version is currently 13.1)</li>
+<li>IDEA Scala plugin installed through the IntelliJ IDEA plugin manager<ul>
+<li><em>installation:</em> <tt class="docutils literal"><span class="pre">IntelliJ</span> <span class="pre">IDEA</span> <span class="pre">&gt;</span> <span class="pre">Preferences</span> <span class="pre">&gt;</span> <span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Browse</span>
+<span class="pre">repositories</span></tt>, then find and right-click <tt class="docutils literal"><span class="pre">Scala</span></tt>, choose
+<tt class="docutils literal"><span class="pre">download</span> <span class="pre">and</span> <span class="pre">install</span></tt>, close repository browser, and hit <tt class="docutils literal"><span class="pre">OK</span></tt> to restart IDEA</li>
+<li><em>documentation:</em> <a class="reference external" href="http://confluence.jetbrains.com/display/IntelliJIDEA/Scala">Scala development in IDEA</a></li>
+</ul>
+</li>
+<li>IDEA SBT plugin installed through the IntelliJ IDEA plugin manager<ul>
+<li><em>installation:</em> <tt class="docutils literal"><span class="pre">IntelliJ</span> <span class="pre">IDEA</span> <span class="pre">&gt;</span> <span class="pre">Preferences</span> <span class="pre">&gt;</span> <span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Browse</span>
+<span class="pre">repositories</span></tt>, then find and right-click <tt class="docutils literal"><span class="pre">SBT</span></tt>, choose
+<tt class="docutils literal"><span class="pre">download</span> <span class="pre">and</span> <span class="pre">install</span></tt>, close repository browser, and hit <tt class="docutils literal"><span class="pre">OK</span></tt> to restart IDEA</li>
+<li><em>documentation:</em> <a class="reference external" href="https://github.com/orfjackal/idea-sbt-plugin/wiki">idea-sbt-plugin</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="preparation">
+<h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Download a <em>standalone</em> Android SDK.</p>
+<ol class="arabic simple">
+<li>visit <a class="reference external" href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></li>
+<li>expand &#8220;sdk for existing ide&#8221;</li>
+<li>press download button</li>
+<li>unzip to a suitable location, e.g., <tt class="docutils literal"><span class="pre">/Applications/Local/android-sdk-macosx</span></tt>, which we will refer to as <tt class="docutils literal"><span class="pre">ANDROID_HOME</span></tt></li>
+</ol>
+</li>
+<li><p class="first">Set up the Android SDK and download SDK components.</p>
+<ol class="arabic simple">
+<li>run the Android SDK manager, <tt class="docutils literal"><span class="pre">$ANDROID_HOME/tools/android</span></tt></li>
+<li>check Android SDK platform tools and build tools version 20, 19.1.0, 19.0.1</li>
+<li>check Android 4.3 (API 18) (<a class="reference external" href="http://stackoverflow.com/questions/17964833/android-emulator-not-rotating-to-landscape">the API 19 emulator has a bug
+related to screen rotation</a>)</li>
+<li>check Android support repository and Google repository (see also <a class="reference external" href="http://stackoverflow.com/questions/20761872/gradle-does-not-resolve-support-library">here</a>)</li>
+<li>check HAXM (hardware acceleration for the emulator)</li>
+<li>on Windows, check USB driver</li>
+<li>install selected packages</li>
+</ol>
+<a class="reference internal image-reference" href="_images/sdkinstall.png"><img alt="Recommended AVD configuration" src="_images/sdkinstall.png" /></a>
+</li>
+<li><p class="first">Configure virtual machine hardware acceleration per
+<a class="reference external" href="http://developer.android.com/tools/devices/emulator.html#accel-vm">these instructions</a>.</p>
+<ul class="simple">
+<li>on Windows or Mac, look in <tt class="docutils literal"><span class="pre">$ANDROID_HOME/extras/intel</span></tt></li>
+<li>on Linux, follow <a class="reference external" href="https://software.intel.com/en-us/blogs/2012/03/12/how-to-start-intel-hardware-assisted-virtualization-hypervisor-on-linux-to-speed-up-intel-android-x86-gingerbread-emulator">these instructions</a></li>
+</ul>
+</li>
+<li><p class="first">Create an Android Virtual Device (AVD) of your choice (perhaps resembling your phone) per
+<a class="reference external" href="http://developer.android.com/tools/devices">these instructions</a>.</p>
+<ul>
+<li><p class="first">you can run the <a class="reference external" href="http://developer.android.com/tools/help/avd-manager.html">AVD manager</a> from the command line:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ $ANDROID_HOME</span>/tools/android avd
+</pre></div>
+</div>
+</li>
+<li><p class="first">the virtual device should support API level 18 (Android 4.3) and have an x86
+CPU, a skin with hardware controls, and the option <em>hardware
+keyboard present</em> checked</p>
+</li>
+</ul>
+<a class="reference internal image-reference" href="_images/avdconfig.png"><img alt="Recommended AVD configuration" src="_images/avdconfig.png" /></a>
+<ul>
+<li><p class="first">to run the Android emulator from the command line, where n4 is the name you chose for the virtual device you just created:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ $ANDROID_HOME</span>/tools/emulator @n4 &amp;
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">If you have an Android device and wish to use it for development,
+you can follow <a class="reference external" href="http://developer.android.com/tools/device.html">these instructions</a>
+to enable it.</p>
+</li>
+<li><p class="first">Fork the desired project from
+<a class="reference external" href="https://bitbucket.org/lucoodevcourse">this collection</a>,
+then clone it using Mercurial (hg);
+or download the corresponding zip file (discouraged).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="developing-on-the-command-line">
+<h2>Developing on the Command Line<a class="headerlink" href="#developing-on-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>We recommend globally and persistently setting <tt class="docutils literal"><span class="pre">$ANDROID_HOME</span></tt>
+(<a class="reference external" href="http://www.computerhope.com/issues/ch000549.htm">Windows instructions</a>, <a class="reference external" href="http://stackoverflow.com/questions/25154555">Mac OS X
+instructions</a>) as
+discussed below and putting <tt class="docutils literal"><span class="pre">$ANDROID_HOME/tools</span></tt> and
+<tt class="docutils literal"><span class="pre">$ANDROID_HOME/platform-tools</span></tt> in the <tt class="docutils literal"><span class="pre">$PATH</span></tt>. These instructions
+assume that you have done this; if not, you can still invoke the
+<tt class="docutils literal"><span class="pre">adb</span></tt> and <tt class="docutils literal"><span class="pre">emulator</span></tt> commands by specifying their full paths.</p>
+<div class="section" id="specifying-the-location-of-the-android-sdk">
+<h3>Specifying the location of the Android SDK<a class="headerlink" href="#specifying-the-location-of-the-android-sdk" title="Permalink to this headline">¶</a></h3>
+<p>You can either</p>
+<ul>
+<li><p class="first">set <tt class="docutils literal"><span class="pre">$ANDROID_HOME</span></tt> to the directory where you installed your
+Android SDK <em>(recommended)</em></p>
+</li>
+<li><p class="first">create a file <tt class="docutils literal"><span class="pre">local.properties</span></tt> in your project root
+(or copy an existing one) with a single line</p>
+<div class="highlight-bash"><div class="highlight"><pre>sdk.dir<span class="o">=</span>/location/of/android/sdk
+</pre></div>
+</div>
+<p><em>You need to do this step for each project you clone to your local workstation.</em></p>
+</li>
+</ul>
+</div>
+<div class="section" id="starting-the-emulator">
+<h3>Starting the emulator<a class="headerlink" href="#starting-the-emulator" title="Permalink to this headline">¶</a></h3>
+<p>To start the emulator:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>emulator @YourAVD &amp;
+</pre></div>
+</div>
+<p>It will take the emulator a couple of minutes to boot to your AVD&#8217;s
+home or lock screen. If you set up hardware acceleration correctly,
+you will see</p>
+<div class="highlight-bash"><div class="highlight"><pre>HAX is working and emulator runs in fast virt mode
+</pre></div>
+</div>
+<p>To verify that you have a connection with the emulator:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>adb devices
+</pre></div>
+</div>
+<p>The resulting list should look like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>List of devices attached
+emulator-5554   device
+</pre></div>
+</div>
+<p>If this is not the case, restart the adb server</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>adb <span class="nb">kill</span>-server
+<span class="nv">$ </span>adb start-server
+</pre></div>
+</div>
+<p>and check again.</p>
+</div>
+<div class="section" id="viewing-the-log">
+<h3>Viewing the log<a class="headerlink" href="#viewing-the-log" title="Permalink to this headline">¶</a></h3>
+<p>In Android, all log messages typically carry a tag.
+In this example, the tag for the main activity is</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">private</span> <span class="k">def</span> <span class="nc">TAG</span> <span class="k">=</span> <span class="s">&quot;hello-android-activity&quot;</span>
+</pre></div>
+</div>
+<p>You can then write tagged log messages like this:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">Log</span><span class="o">.</span><span class="n">i</span><span class="o">(</span><span class="nc">TAG</span><span class="o">,</span> <span class="s">&quot;onCreate&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>You can view the complete log using this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>adb logcat
+</pre></div>
+</div>
+<p>This quickly results in too much information.
+To view only the messages pertaining, say, to a particular tag,
+you can filter by that tag:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>adb logcat | grep hello
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-the-application">
+<h3>Running the application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h3>
+<p>Once your emulator is running or device connected, you can install and
+run the app:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sbt clean android:run
+</pre></div>
+</div>
+<p>The app should now start in the emulator and you should be able to
+interact with it. <em>(Cleaning before running ensures that the app gets
+installed properly on the emulator.)</em></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you get this error <tt class="docutils literal"><span class="pre">Unsupported</span> <span class="pre">class</span> <span class="pre">version</span> <span class="pre">number</span>
+<span class="pre">[52.0]</span> <span class="pre">(maximum</span> <span class="pre">51.0,</span> <span class="pre">Java</span> <span class="pre">1.7)))</span></tt> (usually near the top
+of a long stack trace), make sure you are <em>not</em> using
+Java 8.</p>
+</div>
+</div>
+<div class="section" id="running-the-tests">
+<h3>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h3>
+<p>This command runs the unit tests and the Robolectric-based
+out-of-container functional tests.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sbt <span class="nb">test</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In-container Android instrumentation tests are included
+in some of the examples (sharing a testcase superclass
+with the Robolectric tests) and work in principle, but
+not with the current build file for reasons we do not yet
+understand. We will rely on the Robolectric-based tests
+instead.</p>
+</div>
+</div>
+<div class="section" id="starting-from-scratch">
+<h3>Starting from scratch<a class="headerlink" href="#starting-from-scratch" title="Permalink to this headline">¶</a></h3>
+<p>I have not been able to get pfn&#8217;s gen-android task to work even though
+I tried with a global installation of the plugin.</p>
+<p>In addition to the usual <a class="reference external" href="http://www.scala-sbt.org/0.13/tutorial/Directories.html">sbt directory structure</a>, the key
+ingredients are</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">build.sbt</span></tt> like in <a class="reference external" href="https://bitbucket.org/lucoodevcourse">our examples</a></p>
+<ul class="simple">
+<li>set project name and version as desired</li>
+<li>review the library dependencies, e.g., choose between Mockito and
+ScalaMock</li>
+<li>review the Proguard options</li>
+</ul>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">project/plugins.sbt</span></tt> containing</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">addSbtPlugin</span><span class="o">(</span><span class="s">&quot;com.hanhuy.sbt&quot;</span> <span class="o">%</span> <span class="s">&quot;android-sdk-plugin&quot;</span> <span class="o">%</span> <span class="s">&quot;1.3.5&quot;</span><span class="o">)</span>
+
+<span class="n">addSbtPlugin</span><span class="o">(</span><span class="s">&quot;com.hanhuy.sbt&quot;</span> <span class="o">%</span> <span class="s">&quot;sbt-idea&quot;</span> <span class="o">%</span> <span class="s">&quot;1.7.0-SNAPSHOT&quot;</span><span class="o">)</span>
+
+<span class="n">resolvers</span> <span class="o">+=</span> <span class="nc">Resolver</span><span class="o">.</span><span class="n">sbtPluginRepo</span><span class="o">(</span><span class="s">&quot;snapshots&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p><em>(The blank lines are required.)</em></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">project/build.scala</span></tt> containing</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">object</span> <span class="nc">Build</span> <span class="k">extends</span> <span class="n">android</span><span class="o">.</span><span class="nc">AutoBuild</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For details, please refer to the <a class="reference external" href="https://github.com/pfn/android-sdk-plugin">android-sdk-plugin documentation</a>.</p>
+</div>
+</div>
+<div class="section" id="developing-with-intellij-idea">
+<h2>Developing with IntelliJ IDEA<a class="headerlink" href="#developing-with-intellij-idea" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configuring-intellij-idea">
+<h3>Configuring IntelliJ IDEA<a class="headerlink" href="#configuring-intellij-idea" title="Permalink to this headline">¶</a></h3>
+<p>It is convenient to configure the required SDKs at the global (IDE) level before working on new or existing projects.</p>
+<ul class="simple">
+<li>configure the Java SDK at the global (IDE) level using <a class="reference external" href="http://www.jetbrains.com/idea/webhelp/configuring-global-project-and-module-sdks.html">these
+instructions</a>
+(you can go through the initial dialog or use <tt class="docutils literal"><span class="pre">Command</span> <span class="pre">;</span></tt> on the
+Mac to open the project structure dialog directly)</li>
+<li>repeat these steps for the Android SDK</li>
+</ul>
+</div>
+<div class="section" id="generating-the-configuration-files">
+<h3>Generating the configuration files<a class="headerlink" href="#generating-the-configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>This step requires that you have the <tt class="docutils literal"><span class="pre">sbt-idea</span></tt> plugin installed per the
+instructions for pfn&#8217;s plugin.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sbt gen-idea
+</pre></div>
+</div>
+<p>You will have to repeat this step after every change to the <tt class="docutils literal"><span class="pre">build.sbt</span></tt> or <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt> files
+(see also under &#8220;adding dependencies&#8221; below.</p>
+</div>
+<div class="section" id="opening-the-project-in-idea">
+<h3>Opening the project in IDEA<a class="headerlink" href="#opening-the-project-in-idea" title="Permalink to this headline">¶</a></h3>
+<p>Open <em>(not import)</em> the project through the initial dialog or <tt class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span></tt>.
+You should now be able to edit the project with proper syntax-directed
+editing and code completion.</p>
+<p>Right after opening the project, you may be asked to confirm the location of
+the Android manifest file.</p>
+<p><em>If you ever get a popup saying that this is an sbt-based project and
+offering to import it, choose ignore.</em></p>
+</div>
+<div class="section" id="running-the-tests-and-the-application">
+<h3>Running the tests and the application<a class="headerlink" href="#running-the-tests-and-the-application" title="Permalink to this headline">¶</a></h3>
+<p>Some aspects of generated IDEA Android/Scala project do not work out
+of the box.  We have found it easier to open a terminal within IDEA
+using <tt class="docutils literal"><span class="pre">View</span> <span class="pre">&gt;</span> <span class="pre">Tool</span> <span class="pre">Windows</span> <span class="pre">&gt;</span> <span class="pre">Terminal</span></tt> and running <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">test</span></tt> or
+<tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">android:run</span></tt> as desired. In the latter case, the app should
+start in the emulator and you should be able to interact with it.</p>
+</div>
+<div class="section" id="integrating-idea-and-sbt">
+<h3>Integrating IDEA and sbt<a class="headerlink" href="#integrating-idea-and-sbt" title="Permalink to this headline">¶</a></h3>
+<p>For a faster edit-build-run cycle, though, you will want to perform
+the IntelliJ IDEA integration described in the <em>Advanced Usage</em>
+section of <a class="reference external" href="https://github.com/pfn/android-sdk-plugin/blob/master/README.md">pfn&#8217;s android-sdk-plugin documentation</a>. This
+requires IDEA with both the Scala <em>and</em> SBT plugins mentioned above.</p>
+<p>In our experience, this integration requires the following adjustments
+<em>on a per-project basis</em>:</p>
+<ul class="simple">
+<li>edit the default runtime configuration for Android Application to
+invoke <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">android:package</span></tt> instead of <tt class="docutils literal"><span class="pre">Make</span></tt></li>
+<li>edit the default runtime configuration for ScalaTest to
+invoke <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">test:products</span></tt> instead of <tt class="docutils literal"><span class="pre">Make</span></tt></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-build-dependencies">
+<h2>Adding build dependencies<a class="headerlink" href="#adding-build-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>To add a dependency, you can usually</p>
+<ul>
+<li><p class="first">look it up by name in the <a class="reference external" href="http://search.maven.org">Central Repository</a>
+or <a class="reference external" href="http://mvnrepository.com">MVNrepository</a></p>
+</li>
+<li><p class="first">find the desired version (usually the latest released or stable version)</p>
+</li>
+<li><p class="first">select the sbt tab</p>
+</li>
+<li><p class="first">copy the portion _after_ <tt class="docutils literal"><span class="pre">libraryDependencies</span> <span class="pre">+=</span></tt></p>
+</li>
+<li><p class="first">paste it into this section of <tt class="docutils literal"><span class="pre">build.sbt</span></tt> (followed by a comma)</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>If you are using IntelliJ IDEA, you will also need to</p>
+<ul>
+<li><p class="first">rerun</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sbt gen-idea
+</pre></div>
+</div>
+</li>
+<li><p class="first">back in IDEA, confirm that you want to reload the project</p>
+</li>
+<li><p class="first">reconfirm the location of the Android manifest file</p>
+</li>
+</ul>
+</div>
+<div class="section" id="optional-tools">
+<h2>Optional Tools<a class="headerlink" href="#optional-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-windows-users">
+<h3>For Windows users<a class="headerlink" href="#for-windows-users" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://tortoisehg.bitbucket.org">TortoiseHg</a> (integration of Mercurial with Windows Explorer)</li>
+<li><a class="reference external" href="http://theholmesoffice.com/installing-ubuntu-in-vmware-player-on-windows">Ubuntu in a virtual machine</a> (consider this option if you are a Windows user and have trouble getting things to work)</li>
+</ul>
+</div>
+<div class="section" id="for-windows-and-mac-users">
+<h3>For Windows and Mac users<a class="headerlink" href="#for-windows-and-mac-users" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.sourcetreeapp.com">SourceTree</a> is a GUI client for Mercurial and Git</li>
+</ul>
+</div>
+<div class="section" id="for-all-users">
+<h3>For all users<a class="headerlink" href="#for-all-users" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.genymotion.com">Genymotion</a> emulator and IDEA plugin</li>
+<li>These are useful additional Android Studio/Intellij IDEA
+plugins. (Installation procedure is the same as for the Scala
+plugin.)<ul>
+<li>Code Outline 2</li>
+<li>Key Promoter (helps you learn keyboard shortcuts)</li>
+<li>Markdown</li>
+</ul>
+</li>
+<li>These are useful additional sbt plugins. <a class="reference external" href="http://www.scala-sbt.org/0.13.5/docs/Getting-Started/Using-Plugins.html">You can install them per
+project or
+globally.</a><ul>
+<li><a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt-scoverage</a>:
+uses Scoverage to produce a test code coverage report</li>
+<li><a class="reference external" href="https://github.com/softprops/ls">ls-sbt</a>:  browse available
+libraries on GitHub using ls.implicit.ly</li>
+<li><a class="reference external" href="https://github.com/jrudolph/sbt-dependency-graph">sbt-dependency-graph</a>: creates a
+visual representation of library dependency tree</li>
+<li><a class="reference external" href="https://github.com/rtimush/sbt-updates">sbt-updates</a>: checks
+central repos for dependency updates</li>
+<li><a class="reference external" href="https://github.com/sbt/cpd4sbt">cpd4sbt</a>: copy/paste detection
+for Scala <em>(be sure to set</em> <tt class="docutils literal"><span class="pre">cpdSkipDuplicateFiles</span> <span class="pre">:=</span> <span class="pre">true</span></tt> <em>in
+Android projects to avoid a false positive for each source file)</em></li>
+<li><a class="reference external" href="https://github.com/scalastyle/scalastyle-sbt-plugin">scalastyle</a>: static code checker for Scala</li>
+<li><a class="reference external" href="https://github.com/orrsella/sbt-stats">sbt-stats</a>: simple, extensible source code statistics/metrics</li>
+<li><a class="reference external" href="https://github.com/sbt/sbt-scalariform">sbt-scalariform</a>:
+automatic source code formatting using Scalariform</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">IntelliJ IDEA has a built-in native terminal for your OS. This allows you to use, say, hg or sbt conveniently without leaving IDEA.:</p>
+<div class="highlight-python"><div class="highlight"><pre>View &gt; Tool Windows &gt; Terminal
+</pre></div>
+</div>
+</li>
+<li><p class="first">To practice Scala in a light-weight, exploratory way, you can use Scala worksheets in IntelliJ IDEA. These will give you an interactive, console-like environment, but your work is saved and can be put under version control.:</p>
+<div class="highlight-python"><div class="highlight"><pre>File &gt; New &gt; Scala Worksheet
+</pre></div>
+</div>
+<p><em>You can even make it test-driven by sprinkling assertions throughout your worksheet!</em></p>
+</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Konstantin Läufer.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
